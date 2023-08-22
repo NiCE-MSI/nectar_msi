@@ -283,7 +283,8 @@ class Plotting:
             os.mkdir(dirName)
         '''Defines the figure'''
         fig, ((ax0, ax1), (ax2, ax3)) = plt.subplots(2, 2)
-
+        mz = float(mz)
+        
         '''Single ion image figure'''
         ratio_sn = sn_tissue / sn_background
         diff_sn = sn_tissue - sn_background

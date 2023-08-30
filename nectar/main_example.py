@@ -44,37 +44,42 @@ def main():
     plotting = Plotting()
 
     '''Define paths'''
-    path_data = "X:\\Ariadna\\PDAC\\MALDI\\SpectralAnalysis\\"
-    file = "20181115_PDAC_uMALDI_POS_DHB_slides2and16 Slide 2 - C2.imzML"
-    path_outputs = "X:\\Ariadna\\PDAC\\MALDI\\nectar_outputs\\"
-    polarity = "positive"
-    modality = "maldi"
+    path_data = "..."
+    file = "example.imzML"
+    path_outputs = "..."
+    polarity = "positive"  # in case you want to cross-match with HMDB to calculate the adducts
+    modality = "maldi"  # example of used modality
 
     '''Read imzML data'''
-    # data = reader.read_imzml(path_data + file)
-    #
-    # '''Create full mean spectrum'''
-    # total_mean = dataop.get_mean_spectrum(data)
-    # saver.save_spectrum_hdf5(path_outputs + 'total_mean.hdf5', total_mean)
-    #
-    # '''Separate tissue from background'''
-    # data_masked = dataop.background_subtraction(data, total_mean, path_outputs, n_clusters=2, show_plot=True)
-    # saver.save_hdf5(path_outputs + '20181115_PDAC_uMALDI_POS_DHB_slides2and16 Slide 2 - C2_masked.hdf5', data_masked)
-    data_masked = reader.read_hdf5(path_outputs +
-    '20181115_PDAC_uMALDI_POS_DHB_slides2and16 Slide 2 - C2_masked.hdf5')
+    data = reader.read_imzml(path_data + file)
+
+    '''Create full mean spectrum'''
+    total_mean = dataop.get_mean_spectrum(data)
+    saver.save_spectrum_hdf5(path_outputs + 'total_mean.hdf5', total_mean)
+
+    '''Separate tissue from background'''
+    data_masked = dataop.background_subtraction(data, total_mean, path_outputs, n_clusters=2, show_plot=True)
+    saver.save_hdf5(path_outputs + 'example_masked.hdf5', data_masked)
+    # saver.save_imzML(path_outputs + 'example_masked.imzML', data_masked)  # to save in imzML format
+
+    # data_masked = reader.read_hdf5(path_outputs + 'example_masked.hdf5')  # to read the masked file in hdf5 format
+    # data_masked = reader.read_imzML(path_outputs + 'example_masked.imzML')  # to read the masked file in imzML format
 
     '''Creates mean spectra for tissue and background'''
-    mean_background = dataop.get_mean_spectrum_tissue_background(data_masked, mean_tissue=False,
+    mean_tissue, mean_background = dataop.get_mean_spectrum_tissue_background(data_masked, mean_tissue=True,
                                                                               mean_background=True)
+    saver.save_spectrum_hdf5(path_outputs + 'mean_tissue.hdf5', mean_tissue)
     saver.save_spectrum_hdf5(path_outputs + 'mean_background.hdf5', mean_background)
-    #saver.save_spectrum_hdf5(path_outputs + 'mean_tissue.hdf5', mean_tissue)
-    mean_tissue = reader.read_hdf5_spectrum(path_outputs + 'mean_tissue.hdf5')
+
+    # mean_tissue = reader.read_hdf5_spectrum(path_outputs + 'mean_tissue.hdf5')  # to read the spectrum
     # mean_background = reader.read_hdf5_spectrum(path_outputs + 'mean_background.hdf5')
 
     '''Apply noise correction to spectrum'''
     mean_tissue_corrected = noisecorrection.noise_correction_with_chemical_noise(mean_tissue,
                                                                                  plot_noise=True,
                                                                                  plot_chemicalnoise=True)
+    mean_tissue_corrected = noisecorrection.noise_correction(mean_tissue, plot_noise=True)  # If yor data does not have
+    # chemical noise (sinusoidal noise), you can determine the signal/noise with the SigmaClipping function
 
     saver.save_spectrum_hdf5(path_outputs + 'mean_tissue_corrected.hdf5', mean_tissue_corrected)
     # mean_tissue_corrected = reader.read_hdf5_spectrum(path_outputs + 'mean_tissue_corrected.hdf5')
@@ -103,7 +108,7 @@ def main():
     #final_list.to_csv("X:\\Ariadna\\PDAC\\MALDI\\nectar_outputs\\Compounds_of_interest_final_list.csv", index=False)
 
     '''Save reduced data cubes'''
-    saver.save_final_DataCube(data_masked, final_list, path_outputs, save_imzml=True, save_hdf5=True, save_mat=True)
+    saver.save_final_DataCube(data_masked, final_list, path_outputs, save_imzml=True, save_hdf5=False, save_mat=False)
 
     '''HMDB database cross matching'''
     databasematching.database_matching(final_list, polarity, modality, path_outputs, ppm=30.)

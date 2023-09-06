@@ -1,4 +1,5 @@
-"""nectar - nectar (NoisE CorrecTion AlgoRithm) is a python package for noise correction in Q-ToF MSI instruments."""
+"""nectar_msi - nectar_msi (NoisE CorrecTion AlgoRithm) is a python package for noise correction
+in Q-ToF MSI instruments."""
 
 from nectar_msi.data_formats.data_cube import DataCube
 from nectar_msi.data_formats.data_spectrum import DataSpectrum

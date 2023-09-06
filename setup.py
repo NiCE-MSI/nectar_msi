@@ -22,7 +22,7 @@ setup(
     license="GNU Lesser General Public License v3.0",
     author="Ariadna Gonzalez-Fernandez",
     author_email="ariadna.gonzalez@npl.co.uk",
-    description="NECTAR (NoisE CorrecTion AlgoRithm) is a python package for noise determination and correction in MSI.",
+    description="NECTAR_MSI (NoisE CorrecTion AlgoRithm) is a python package for noise determination and correction in MSI.",
     long_description=read("README.md"),
     packages=find_packages(exclude=("tests",)),
     install_requires=['numpy', 'matplotlib', 'pyimzml', 'h5py', 'scipy', 'pandas', 'scikit-learn', 'tqdm'],

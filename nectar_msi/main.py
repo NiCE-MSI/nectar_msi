@@ -6,21 +6,8 @@ standard options used to obtain a final list of peaks for further analysis."""
 from nectar_msi import Readers, Savers, DataOperations, NoiseCorrection, PeakPicking, DatabaseMatching, Plotting
 
 """___Third-Party Modules___"""
-import numpy as np
-from multiprocessing import Pool
 import sys
-import os
-import matplotlib.pyplot as plt
-import pandas as pd
-import scipy.io as sio
-import scipy.io
-import h5py
-from skimage.segmentation import watershed
-from skimage.filters import sobel
-import copy
-from tqdm import tqdm
-from scipy.io import savemat
-import matplotlib.cm as cm
+
 
 """___Authorship___"""
 __author__ = "Ariadna Gonzalez"

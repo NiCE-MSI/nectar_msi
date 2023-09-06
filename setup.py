@@ -6,7 +6,7 @@ from setuptools import find_packages
 from setuptools import setup
 import versioneer
 
-exec(open('nectar/_version.py').read())
+exec(open('nectar_msi/_version.py').read())
 
 def read(filename):
     filename = os.path.join(os.path.dirname(__file__), filename)

@@ -6,6 +6,7 @@ from setuptools import find_packages
 from setuptools import setup
 import versioneer
 
+exec(open('nectar/_version.py').read())
 
 def read(filename):
     filename = os.path.join(os.path.dirname(__file__), filename)
@@ -15,15 +16,14 @@ def read(filename):
 
 
 setup(
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
-    name="nectar",
+    version=__version__,
+    name="nectar_msi",
     url="https://gitlab.npl.co.uk/nice-msi/nectar",
     license="GNU Lesser General Public License v3.0",
     author="Ariadna Gonzalez-Fernandez",
     author_email="ariadna.gonzalez@npl.co.uk",
     description="NECTAR (NoisE CorrecTion AlgoRithm) is a python package for noise determination and correction in MSI.",
-    long_description=read("README.rst"),
+    long_description=read("README.md"),
     packages=find_packages(exclude=("tests",)),
     install_requires=['numpy', 'matplotlib', 'pyimzml', 'h5py', 'scipy', 'pandas', 'scikit-learn', 'tqdm'],
     extras_require={"dev": ["pre-commit", "tox", "sphinx", "sphinx_rtd_theme", 'jupyter']},

@@ -1,4 +1,4 @@
-# NECTAR: NoisE CorrecTion AlgoRithm
+# NECTAR_MSI: NoisE CorrecTion AlgoRithm for mass-spectrometry-imaging
 
 NECTAR is a Python package for noise correction and noise determination in mass-spectrometry-imaging (MSI) data. 
 This package is explained in detail in: (reference to the paper) and it is shown here for transparency purposes. 
@@ -9,7 +9,7 @@ The folder "example data" contains the mean spectrum of the tissue area correspo
 You can use your own .imzML file to obtain a de-noised list of peaks of interest. The script can be run from the Jupyter notebook provided, or from the main.py file.
 
 # Installation
-
+pip install nectar-msi
 
 # License
 nectar is free software licensed under the GNU Public License (v3).

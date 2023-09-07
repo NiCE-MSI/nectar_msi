@@ -1,5 +1,5 @@
 """Main file to be run in python to apply the pre-processing in a MSI dataset.
-Several tasks can be done with the nectar package. Here we show an example of the most
+Several tasks can be done with nectar-msi package. Here we show an example of the most
 standard options used to obtain a final list of peaks for further analysis."""
 
 """___Built-In Modules___"""
@@ -11,7 +11,7 @@ import sys
 
 """___Authorship___"""
 __author__ = "Ariadna Gonzalez"
-__created__ = "24/02/2022"
+__created__ = "07/09/2023"
 __maintainer__ = "Ariadna Gonzalez"
 __email__ = "ariadna.gonzalez@npl.co.uk"
 

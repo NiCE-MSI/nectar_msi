@@ -1,7 +1,7 @@
 """Class for performing plots (e.g. plotting mean, Gaussian fittings)"""
 
 """___Built-In Modules___"""
-from nectar.gaussian_fitting.gaussian_fitting_definitions import GaussianFittingDefinitions
+from nectar_msi.gaussian_fitting.gaussian_fitting_definitions import GaussianFittingDefinitions
 
 """___Third-Party Modules___"""
 import numpy as np

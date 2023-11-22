@@ -17,7 +17,7 @@ from nectar_msi.peak_picking.peak_picking import PeakPicking
 __author__ = "Ariadna Gonzalez-Fernandez <ariadna.gonzalez@npl.co.uk>"
 __all__ = []
 
-from ._version import get_versions
+from ._version import __version__
 
 __version__ = get_versions()["version"]
 del get_versions

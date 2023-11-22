@@ -18,6 +18,3 @@ __author__ = "Ariadna Gonzalez-Fernandez <ariadna.gonzalez@npl.co.uk>"
 __all__ = []
 
 from ._version import __version__
-
-__version__ = get_versions()["version"]
-del get_versions
